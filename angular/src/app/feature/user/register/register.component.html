@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
+      <div class="row">
+        <div class="col-lg-4 col-md-8 mx-auto">
+          <div class="card">
+            <article class="card-body">
+              <a [routerLink]="['/login']" class="float-right btn btn-outline-primary">Inicio de sesión</a>
+              <h4 class="card-title mb-4 mt-1">Registro</h4>
+              <form (submit)="register()" novalidate autocomplete="off" [formGroup]="registerForm" class="row g-3">
+                <div class="col-sm-12 col-md-12">
+                  <label>Nombre</label>
+                  <input type="text" formControlName="firstName" name="firstName" class="form-control" />
+                </div>
+                <div class="col-sm-12 col-md-12">
+                  <label>Apellido</label>
+                  <input name="lastName" class="form-control" type="text" formControlName="lastName" />
+                </div>
+                <div class="col-sm-12 col-md-12">
+                  <label>Email</label>
+                  <input class="form-control" type="email" name="username" formControlName="username" />
+                </div>
+                <div class="col-sm-12 col-md-12">
+                  <label>Password</label>
+                  <input class="form-control" type="password" name="password" formControlName="password" />
+                </div>
+                <div class="col-sm-12 col-md-12">
+                  <label>Confirmación de password</label>
+                  <input class="form-control" type="password" name="confirmPassword" formControlName="confirmPassword" />
+                </div>
+                <div class="col-sm-12 col-md-12 mt-3">
+                  <!-- checkbox .// -->
+                  <!-- form-group// -->
+                  <div class="form-group">
+                    <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary btn-block">Registro</button>
+                  </div>
+                </div>
+                <!-- form-group// -->
+              </form>
+            </article>
+          </div>
+          <!-- card.// -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

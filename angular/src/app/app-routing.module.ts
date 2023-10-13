@@ -11,6 +11,16 @@ const routes: Routes = [
     path: "contacts",
     canActivate: [AuthGuard],
     loadChildren: () => import("./feature/contact/contact.module").then((module) => module.ContactModule)
+  },
+  {
+    path: "municipios",
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./feature/municipio/municipio.module").then((module) => module.MunicipioModule)
+  },
+  {
+    path: "kilometrajes",
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./feature/kilometraje/kilometraje.module").then((module) => module.KilometrajeModule)
   }
 ];
 

@@ -1,0 +1,51 @@
+<div class="panel panel-default">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-4">
+      <h2 *ngIf="!municipioForm.get('_id').value">Agregar Municipio</h2>
+      <h2 *ngIf="municipioForm.get('_id').value">Actualizar Municipio</h2>
+    </div>
+  </div>
+  <div>
+    <div class="col-md-7 offset-md-3">
+      <span class="anchor" id="formComplex"></span>
+      <div class="my-5"></div>
+      <!-- <h3>Municipio Detalle </h3> -->
+      <form [formGroup]="municipioForm" class="row g-3">
+        <div class="col-sm-6 col-md-6">
+          <label for="id_municipio" class="form-label">Id Municipio</label>
+          <input type="text" class="form-control" formControlName="id_municipio" />
+          </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="municipio" class="form-label">Municipio</label>
+          <input type="text" class="form-control" formControlName="municipio" />
+          </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="id_depto" class="form-label">Id Departamento</label>
+          <input type="text" class="form-control" formControlName="id_depto" />
+          </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="id_agc" class="form-label">Id Agencia</label>
+          <input type="text" class="form-control" formControlName="id_agc" />
+          </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="destino_express" class="form-label">Destino Express</label>
+          <input type="checkbox" class="form-control" formControlName="destino_express" />
+          <!-- <input type="text" class="form-control" formControlName="destino_express" /> -->
+          </div>
+        <div class="row col-sm-12 col-md-12 mt-2">
+          <div class="col-sm-6 col-md-6">
+            <a href="javascript:void(0);" [routerLink]="['/municipios']" class="btn btn-primary"> <i class="fa fa-chevron-left"></i>
+              Regresar</a>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <div class="btn-group pull-right">
+              <button class="btn btn-primary" [disabled]="municipioForm.invalid" (click)="submit()">Salvar</button>
+              <button class="btn btn-secondary" (click)="reset()">Reset</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

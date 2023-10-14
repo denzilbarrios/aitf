@@ -41,42 +41,43 @@ router
   .put(contactController.update)
   .delete(contactController.delete);
 
-// Import agenciadestino controller
-const agenciadestinoController = require("./controllers/agenciadestino.controller");
+  
+// Import agencia controller
+var agenciaController = require("./controllers/agencia.controller");
 
-// Rutas para el controlador de agenciasdestino
+// Rutas para el controlador de agencia
 router
-  .route("/agenciadestino")
-  .get(agenciadestinoController.index)
-  .post(agenciadestinoController.new);
+  .route("/agencias")
+  .get(agenciaController.index)
+  .post(agenciaController.new);
 router
-  .route("/agenciadestino/:agenciadestino_id")
-  .get(agenciadestinoController.view)
-  .patch(agenciadestinoController.update)
-  .put(agenciadestinoController.update)
-  .delete(agenciadestinoController.delete);
+  .route("/agencia/:agencia_id")
+  .get(agenciaController.view)
+  .patch(agenciaController.update)
+  .put(agenciaController.update)
+  .delete(agenciaController.delete);
 
-// Import destinos controller
-const destinossController = require("./controllers/destinoss.controller");
+// Import boleto controller
+var boletoController = require("./controllers/boleto.controller");
 
-// Rutas para el controlador de destinos
+// Rutas para el controlador de boleto
 router
-  .route("/destinoss")
-  .get(destinossController.index)
-  .post(destinossController.new);
+  .route("/boletos")
+  .get(boletoController.index)
+  .post(boletoController.new);
 router
-  .route("/destinoss/:destinoss_id")
-  .get(destinossController.view)
-  .patch(destinossController.update)
-  .put(destinossController.update)
-  .delete(destinossController.delete);
+  .route("/boleto/:boleto_id")
+  .get(boletoController.view)
+  .patch(boletoController.update)
+  .put(boletoController.update)
+  .delete(boletoController.delete);
 
 // Import destino controller
-const destinoController = require("./controllers/destino.controller");
+var destinoController = require("./controllers/destino.controller");
 
-// Rutas para el controlador de destinos
+// Rutas para el controlador de destino
 router
-  .route("/destino")
+  .route("/destinos")
   .get(destinoController.index)
   .post(destinoController.new);
 router
@@ -86,27 +87,102 @@ router
   .put(destinoController.update)
   .delete(destinoController.delete);
 
-// Import hora_rutasugerida controller
-const hora_rutasugeridaController = require("./controllers/hora_rutasugerida.controller");
+// Import empleado controller
+var empleadoController = require("./controllers/empleado.controller");
 
-// Rutas para el controlador de hora_rutasugerida
+// Rutas para el controlador de empleado
 router
-  .route("/hora_rutasugerida")
-  .get(hora_rutasugeridaController.index)
-  .post(hora_rutasugeridaController.new);
+  .route("/empleados")
+  .get(empleadoController.index)
+  .post(empleadoController.new);
 router
-  .route("/hora_rutasugerida/:hora_rutasugerida_id")
-  .get(hora_rutasugeridaController.view)
-  .patch(hora_rutasugeridaController.update)
-  .put(hora_rutasugeridaController.update)
-  .delete(hora_rutasugeridaController.delete);
+  .route("/empleado/:empleado_id")
+  .get(empleadoController.view)
+  .patch(empleadoController.update)
+  .put(empleadoController.update)
+  .delete(empleadoController.delete);
 
-// Import ruta controller 
-const rutaController = require("./controllers/rutas.controller");
+// Import empresa controller
+var empresaController = require("./controllers/empresa.controller");
 
-// Rutas para el controlador de rutas
+// Rutas para el controlador de empresa
 router
-  .route("/ruta")
+  .route("/empresas")
+  .get(empresaController.index)
+  .post(empresaController.new);
+router
+  .route("/empresa/:empresa_id")
+  .get(empresaController.view)
+  .patch(empresaController.update)
+  .put(empresaController.update)
+  .delete(empresaController.delete);
+
+// Import factura controller
+var facturaController = require("./controllers/factura.controller");
+
+// Rutas para el controlador de factura
+router
+  .route("/facturas")
+  .get(facturaController.index)
+  .post(facturaController.new);
+router
+  .route("/factura/:factura_id")
+  .get(facturaController.view)
+  .patch(facturaController.update)
+  .put(facturaController.update)
+  .delete(facturaController.delete);
+
+// Import facturaDetalle controller
+var facturaDetalleController = require("./controllers/facturaDetalle.controller");
+
+// Rutas para el controlador de facturaDetalle
+router
+  .route("/facturaDetalles")
+  .get(facturaDetalleController.index)
+  .post(facturaDetalleController.new);
+router
+  .route("/facturaDetalle/:facturaDetalle_id")
+  .get(facturaDetalleController.view)
+  .patch(facturaDetalleController.update)
+  .put(facturaDetalleController.update)
+  .delete(facturaDetalleController.delete);
+
+// Import horario controller
+var horarioController = require("./controllers/horario.controller");
+
+// Rutas para el controlador de horario
+router
+  .route("/horarios")
+  .get(horarioController.index)
+  .post(horarioController.new);
+router
+  .route("/horario/:horario_id")
+  .get(horarioController.view)
+  .patch(horarioController.update)
+  .put(horarioController.update)
+  .delete(horarioController.delete);
+
+// Import puesto controller
+var puestoController = require("./controllers/puesto.controller");
+
+// Rutas para el controlador de puesto
+router
+  .route("/puestos")
+  .get(puestoController.index)
+  .post(puestoController.new);
+router
+  .route("/puesto/:puesto_id")
+  .get(puestoController.view)
+  .patch(puestoController.update)
+  .put(puestoController.update)
+  .delete(puestoController.delete);
+
+// Import ruta controller
+var rutaController = require("./controllers/ruta.controller");
+
+// Rutas para el controlador de ruta
+router
+  .route("/rutas")
   .get(rutaController.index)
   .post(rutaController.new);
 router
@@ -116,125 +192,50 @@ router
   .put(rutaController.update)
   .delete(rutaController.delete);
 
- // Import rutas_detalle controller
-const rutas_detalleController = require("./controllers/rutas_detalle.controller");
+// Import serie controller
+var serieController = require("./controllers/serie.controller");
 
-// Rutas para el controlador de rutas_detalle
+// Rutas para el controlador de serie
 router
-  .route("/rutas_detalle")
-  .get(rutas_detalleController.index)
-  .post(rutas_detalleController.new);
+  .route("/series")
+  .get(serieController.index)
+  .post(serieController.new);
 router
-  .route("/rutas_detalle/:rutas_detalle_id")
-  .get(rutas_detalleController.view)
-  .patch(rutas_detalleController.update)
-  .put(rutas_detalleController.update)
-  .delete(rutas_detalleController.delete);
+  .route("/serie/:serie_id")
+  .get(serieController.view)
+  .patch(serieController.update)
+  .put(serieController.update)
+  .delete(serieController.delete);
 
-// Import rutas_puntos_enlace controller
-const rutas_puntos_enlaceController = require("./controllers/rutas_puntos_enlace.controller");
+// Import servicio controller
+var servicioController = require("./controllers/servicio.controller");
 
-// Rutas para el controlador de rutas_puntos_enlace
+// Rutas para el controlador de servicio
 router
-  .route("/rutas_puntos_enlace")
-  .get(rutas_puntos_enlaceController.index)
-  .post(rutas_puntos_enlaceController.new);
+  .route("/servicios")
+  .get(servicioController.index)
+  .post(servicioController.new);
 router
-  .route("/rutas_puntos_enlace/:rutas_puntos_enlace_id")
-  .get(rutas_puntos_enlaceController.view)
-  .patch(rutas_puntos_enlaceController.update)
-  .put(rutas_puntos_enlaceController.update)
-  .delete(rutas_puntos_enlaceController.delete);
+  .route("/servicio/:servicio_id")
+  .get(servicioController.view)
+  .patch(servicioController.update)
+  .put(servicioController.update)
+  .delete(servicioController.delete);
 
-  // Import rutas_tramos controller
-const rutas_tramosController = require("./controllers/rutas_tramos.controller");
+// Import tipoAgencia controller
+var tipoAgenciaController = require("./controllers/tipoAgencia.controller");
 
-// Rutas para el controlador de rutas_tramos
+// Rutas para el controlador de tipoAgencia
 router
-  .route("/rutas_tramos")
-  .get(rutas_tramosController.index)
-  .post(rutas_tramosController.new);
+  .route("/tipoAgencias")
+  .get(tipoAgenciaController.index)
+  .post(tipoAgenciaController.new);
 router
-  .route("/rutas_tramos/:rutas_tramos_id")
-  .get(rutas_tramosController.view)
-  .patch(rutas_tramosController.update)
-  .put(rutas_tramosController.update)
-  .delete(rutas_tramosController.delete);
-
-  // Import rutas_tramosunion controller
-const rutas_tramosunionController = require("./controllers/rutas_tramosunion.controller");
-
-// Rutas para el controlador de rutas_tramosunion
-router
-  .route("/rutas_tramosunion")
-  .get(rutas_tramosunionController.index)
-  .post(rutas_tramosunionController.new);
-router
-  .route("/rutas_tramosunion/:rutas_tramosunion_id")
-  .get(rutas_tramosunionController.view)
-  .patch(rutas_tramosunionController.update)
-  .put(rutas_tramosunionController.update)
-  .delete(rutas_tramosunionController.delete);
-
-// Import rutas controller
-const rutasController = require("./controllers/rutas.controller");
-
-// Rutas para el controlador de rutas
-router
-  .route("/rutas")
-  .get(rutasController.index)
-  .post(rutasController.new);
-router
-  .route("/rutas/:ruta_id")
-  .get(rutasController.view)
-  .patch(rutasController.update)
-  .put(rutasController.update)
-  .delete(rutasController.delete);
-
-// Import salida controller
-const salidaController = require("./controllers/salida.controller");
-
-// Rutas para el controlador de salida
-router
-  .route("/salida")
-  .get(salidaController.index)
-  .post(salidaController.new);
-router
-  .route("/salida/:salida_id")
-  .get(salidaController.view)
-  .patch(salidaController.update)
-  .put(salidaController.update)
-  .delete(salidaController.delete);
-
-// Import Municipio controller
-var municipioController = require("./controllers/municipio.controller");
-// Municipio routes
-router
-  .route("/municipios")
-  .get(municipioController.index)
-  .post(municipioController.new);
-router
-  .route("/municipio/:municipio_id")
-  .get(municipioController.view)
-  .patch(municipioController.update)
-  .put(municipioController.update)
-  .delete(municipioController.delete);
-
-// Import kilometraje controller
-var kilometrajeController = require("./controllers/kilometraje.controller");
-
-// Rutas para el controlador de kilometraje
-router
-  .route("/kilometrajes")
-  .get(kilometrajeController.index)
-  .post(kilometrajeController.new);
-router
-  .route("/kilometraje/:kilometraje_id")
-  .get(kilometrajeController.view)
-  .patch(kilometrajeController.update)
-  .put(kilometrajeController.update)
-  .delete(kilometrajeController.delete);
-
+  .route("/tipoAgencia/:tipoAgencia_id")
+  .get(tipoAgenciaController.view)
+  .patch(tipoAgenciaController.update)
+  .put(tipoAgenciaController.update)
+  .delete(tipoAgenciaController.delete);
 
 // Export API routes
 module.exports = router;

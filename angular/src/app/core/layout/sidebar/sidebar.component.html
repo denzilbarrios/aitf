@@ -37,6 +37,17 @@
     <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
     <span>Kilometrajes</span>
   </a>
+  <a
+    [routerLink]="['/agencias']"
+    [routerLinkActive]="['router-link-active']"
+    tooltip="Agencias"
+    container="body"
+    style="z-index: 1000; position: relative;"
+    class="list-group-item"
+  >
+    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    <span>Agencias</span>
+  </a>
     <div class="header-fields">
       <div class="nested-menu">
         <a class="list-group-item" (click)="addExpandClass('profile')">

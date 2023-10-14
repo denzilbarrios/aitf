@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Definición de variables en minúsculas
-original_1="municipios"
-replace_1="kilometrajes"
+original_1="kilometrajes"
+replace_1="agencias"
 
-original_2="municipio"
-replace_2="kilometraje"
+original_2="kilometraje"
+replace_2="agencia"
 
-DIR="./kilometraje/"
+DIR="./agencia/"
 
 # Convertir la inicial de original_X a mayúsculas
 ORIGINAL_1_UPPER="${original_1^}"

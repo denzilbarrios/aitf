@@ -21,6 +21,11 @@ const routes: Routes = [
     path: "kilometrajes",
     canActivate: [AuthGuard],
     loadChildren: () => import("./feature/kilometraje/kilometraje.module").then((module) => module.KilometrajeModule)
+  },
+  {
+    path: "agencias",
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./feature/agencia/agencia.module").then((module) => module.AgenciaModule)
   }
 ];
 

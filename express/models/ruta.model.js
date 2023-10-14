@@ -5,7 +5,15 @@ const rutaSchema = mongoose.Schema({
   id_ruta: {
     type: Number,
     required: true,
-    primaryKey: true
+    primaryKey: true,
+  },
+  nombre: {
+    type: String,
+    required: true
+  },
+  nemonico: {
+    type: String,
+    required: true
   },
   id_origen: {
     type: Number,
@@ -15,35 +23,38 @@ const rutaSchema = mongoose.Schema({
     type: Number,
     required: true
   },
-  id_empsa: {
+  id_destino: {
     type: Number,
-    default: null
+    required: true
   },
   id_servicio: {
     type: Number,
-    default: null
+    required: true
   },
-  frecuencia: {
+  no_bus: {
     type: String,
-    default: "DIARIO"
+    require: true
   },
-  tiempo_estimado: {
+  id_piloto: {
     type: Number,
-    default: 0
+    required: true
   },
-  distancia: {
+  id_asistente: {
     type: Number,
-    default: 0
-  },
-  precio: {
-    type: Number,
-    default: 0
+    required: true
   },
   activo: {
     type: Boolean,
     default: true
+  },
+  create_date: {
+    type: Date,
+    default: Date.now
   }
 });
 
 // Export Ruta model
 const Ruta = (module.exports = mongoose.model("ruta", rutaSchema));
+module.exports.get = function (callback, limit) {
+  Ruta.find(callback).limit(limit);
+};

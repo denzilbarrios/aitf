@@ -1,0 +1,41 @@
+import { Component, OnInit } from "@angular/core";
+import { SortType, SelectionType } from "@swimlane/ngx-datatable";
+import { BoletoService } from "../boleto.service";
+import { Router } from "@angular/router";
+@Component({
+  selector: "app-boleto-list",
+  templateUrl: "./boleto-list.component.html",
+  styleUrls: ["./boleto-list.component.scss"]
+})
+export class BoletoListComponent implements OnInit {
+  SortType = SortType;
+  boletos: any;
+  selected = [];
+  SelectionType = SelectionType;
+
+  columns = [
+    { prop: "id_boleto", name: "Id",  width: 9 },
+    { prop: "inicialkm",  width: 9 },
+    { prop: "finalkm", width: 9},
+    { prop: "preciokm", width: 9},
+    { prop: "activo" },
+  ];
+  constructor(private boletoService: BoletoService, private router: Router) {}
+  getAll(): void {
+    this.boletoService.getAll().subscribe(
+      (data) => {
+        console.log(data);
+        this.boletos = data;
+      },
+
+      (error) => {}
+    );
+  }
+  onSelect(selected: any): void {
+    console.log("Select Event", selected, this.selected);
+    this.router.navigate(["/boletos/details/" + this.selected[0]._id]);
+  }
+  ngOnInit(): void {
+    this.getAll();
+  }
+}

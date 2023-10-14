@@ -4,7 +4,8 @@
       <i class="fa fa-fw fa-dashboard"></i>&nbsp;
       <span>Dashboard</span>
     </a>
-    <a
+<!--
+  <a
       [routerLink]="['/contacts']"
       [routerLinkActive]="['router-link-active']"
       tooltip="Contacts"
@@ -14,7 +15,7 @@
     >
       <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
       <span>Contactos</span>
-    </a>
+    </a>   
   <a
     [routerLink]="['/municipios']"
     [routerLinkActive]="['router-link-active']"
@@ -36,7 +37,7 @@
   >
     <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
     <span>Kilometrajes</span>
-  </a>
+  </a> -->
   <a
     [routerLink]="['/agencias']"
     [routerLinkActive]="['router-link-active']"
@@ -48,6 +49,147 @@
     <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
     <span>Agencias</span>
   </a>
+    <a
+    [routerLink]="['/boletos']"
+    [routerLinkActive]="['router-link-active']"
+    tooltip="Boletos"
+    container="body"
+    style="z-index: 1000; position: relative;"
+    class="list-group-item"
+  >
+    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    <span>Boletos</span>
+  </a>
+  <a
+    [routerLink]="['/destinos']"
+    [routerLinkActive]="['router-link-active']"
+    tooltip="Destinos"
+    container="body"
+    style="z-index: 1000; position: relative;"
+    class="list-group-item"
+  >
+    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    <span>Destinos</span>
+  </a>
+  <a
+    [routerLink]="['/empleados']"
+    [routerLinkActive]="['router-link-active']"
+    tooltip="Empleados"
+    container="body"
+    style="z-index: 1000; position: relative;"
+    class="list-group-item"
+  >
+    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    <span>Empleados</span>
+  </a>
+  <a
+    [routerLink]="['/empresas']"
+    [routerLinkActive]="['router-link-active']"
+    tooltip="Empresas"
+    container="body"
+    style="z-index: 1000; position: relative;"
+    class="list-group-item"
+  >
+    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    <span>Empresas</span>
+  </a>
+  <a
+    [routerLink]="['/facturas']"
+    [routerLinkActive]="['router-link-active']"
+    tooltip="Facturas"
+    container="body"
+    style="z-index: 1000; position: relative;"
+    class="list-group-item"
+  >
+    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    <span>Facturas</span>
+  </a>
+
+  <a
+    [routerLink]="['/horarios']"
+    [routerLinkActive]="['router-link-active']"
+    tooltip="Horarios"
+    container="body"
+    style="z-index: 1000; position: relative;"
+    class="list-group-item"
+  >
+    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    <span>Horarios</span>
+  </a>
+
+  <a
+  [routerLink]="['/puestos']"
+  [routerLinkActive]="['router-link-active']"
+  tooltip="Puestos"
+  container="body"
+  style="z-index: 1000; position: relative;"
+  class="list-group-item"
+>
+  <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+  <span>Puestos</span>
+</a>
+
+  <a
+    [routerLink]="['/rutas']"
+    [routerLinkActive]="['router-link-active']"
+    tooltip="Rutas"
+    container="body"
+    style="z-index: 1000; position: relative;"
+    class="list-group-item"
+  >
+    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    <span>Rutas</span>
+  </a>
+  <a
+    [routerLink]="['/serie']"
+    [routerLinkActive]="['router-link-active']"
+    tooltip="Series"
+    container="body"
+    style="z-index: 1000; position: relative;"
+    class="list-group-item"
+  >
+    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    <span>Series</span>
+  </a>
+
+  <a
+    [routerLink]="['/servicio']"
+    [routerLinkActive]="['router-link-active']"
+    tooltip="Servicios"
+    container="body"
+    style="z-index: 1000; position: relative;"
+    class="list-group-item"
+  >
+    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    <span>Servicios</span>
+  </a>
+
+  <a
+    [routerLink]="['/servicio']"
+    [routerLinkActive]="['router-link-active']"
+    tooltip="Servicios"
+    container="body"
+    style="z-index: 1000; position: relative;"
+    class="list-group-item"
+  >
+    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    <span>Servicios</span>
+  </a>
+
+  <a
+    [routerLink]="['/tipoAgencias']"
+    [routerLinkActive]="['router-link-active']"
+    tooltip="Tipo de Agencias"
+    container="body"
+    style="z-index: 1000; position: relative;"
+    class="list-group-item"
+  >
+    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+    <span>Tipo de Agencias</span>
+  </a>
+
+
+  
     <div class="header-fields">
       <div class="nested-menu">
         <a class="list-group-item" (click)="addExpandClass('profile')">

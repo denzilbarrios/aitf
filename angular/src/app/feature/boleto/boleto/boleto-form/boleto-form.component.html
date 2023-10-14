@@ -1,0 +1,59 @@
+<div class="panel panel-default">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-4">
+      <h2 *ngIf="!boletoForm.get('_id').value">Agregar Boleto</h2>
+      <h2 *ngIf="boletoForm.get('_id').value">Actualizar Boleto</h2>
+    </div>
+  </div>
+  <div>
+    <div class="col-md-7 offset-md-3">
+      <span class="anchor" id="formComplex"></span>
+      <div class="my-5"></div>
+      <!-- <h3>Boleto Detalle </h3> -->
+      <form [formGroup]="boletoForm" class="row g-3">
+        <div class="col-sm-6 col-md-6">
+          <label for="id_boleto" class="form-label">id Boleto</label>
+          <input type="text" class="form-control" formControlName="id_boleto" />
+          </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="fecha_viaje" class="form-label">Fecha Viaje</label>
+          <input type="text" class="form-control" formControlName="fecha_viaje" />
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <label for="id_horario" class="form-label">Horario</label>
+            <input type="text" class="form-control" formControlName="id_horario" />
+            </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="id_ruta" class="form-label">Ruta</label>
+          <input type="text" class="form-control" formControlName="id_ruta" />
+          </div>
+        <div class="col-sm-6 col-md-6">
+            <label for="id_servicio" class="form-label">Servicio</label>
+            <input type="text" class="form-control" formControlName="id_servicio" />
+            </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="dni" class="form-label">DNI</label>
+          <input type="text" class="form-control" formControlName="dni" />
+          </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="nom_viajero" class="form-label">Nombre de Viajero</label>
+          <input type="text" class="form-control" formControlName="nom_viajero" />
+          </div>
+        
+        <div class="row col-sm-12 col-md-12 mt-2">
+          <div class="col-sm-6 col-md-6">
+            <a href="javascript:void(0);" [routerLink]="['/boletos']" class="btn btn-primary"> <i class="fa fa-chevron-left"></i>
+              Regresar</a>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <div class="btn-group pull-right">
+              <button class="btn btn-primary" [disabled]="boletoForm.invalid" (click)="submit()">Salvar</button>
+              <button class="btn btn-secondary" (click)="reset()">Reset</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

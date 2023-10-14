@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-4">
+      <h2 *ngIf="!empresaForm.get('_id').value">Agregar Empresa</h2>
+      <h2 *ngIf="empresaForm.get('_id').value">Actualizar Empresa</h2>
+    </div>
+  </div>
+  <div>
+    <div class="col-md-7 offset-md-3">
+      <span class="anchor" id="formComplex"></span>
+      <div class="my-5"></div>
+      <!-- <h3>Empresa Detalle </h3> -->
+      <form [formGroup]="empresaForm" class="row g-3">
+        <div class="col-sm-6 col-md-6">
+          <label for="id_empresa" class="form-label">Id Empresa</label>
+          <input type="text" class="form-control" formControlName="id_empresa" />
+          </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="inicialkm" class="form-label">Inicio Empresa</label>
+          <input type="text" class="form-control" formControlName="inicialkm" />
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <label for="finalkm" class="form-label">Final Empresa</label>
+            <input type="text" class="form-control" formControlName="finalkm" />
+            </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="preciokm" class="form-label">Precio Empresa</label>
+          <input type="text" class="form-control" formControlName="preciokm" />
+          </div>
+        <div class="row col-sm-12 col-md-12 mt-2">
+          <div class="col-sm-6 col-md-6">
+            <a href="javascript:void(0);" [routerLink]="['/empresas']" class="btn btn-primary"> <i class="fa fa-chevron-left"></i>
+              Regresar</a>
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <div class="btn-group pull-right">
+              <button class="btn btn-primary" [disabled]="empresaForm.invalid" (click)="submit()">Salvar</button>
+              <button class="btn btn-secondary" (click)="reset()">Reset</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

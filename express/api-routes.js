@@ -73,7 +73,7 @@ router
   .delete(boletoController.delete);
 
 
-/*  
+  
 // Import destino controller
 var destinoController = require("./controllers/destino.controller");
 
@@ -239,6 +239,6 @@ router
   .put(tipoAgenciaController.update)
   .delete(tipoAgenciaController.delete);
 
- */ 
+
 // Export API routes
 module.exports = router;

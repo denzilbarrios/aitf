@@ -35,7 +35,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import("./feature/boleto/boleto.module").then((module) => module.BoletoModule)
   },
-  /*
+  
   {
     path: "destinos",
     canActivate: [AuthGuard],
@@ -86,7 +86,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import("./feature/tipoAgencia/tipoAgencia.module").then((module) => module.TipoAgenciaModule)
   }
-  */
+  
 ];
 
 @NgModule({

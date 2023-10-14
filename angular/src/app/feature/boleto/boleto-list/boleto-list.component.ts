@@ -15,9 +15,10 @@ export class BoletoListComponent implements OnInit {
 
   columns = [
     { prop: "id_boleto", name: "Id",  width: 9 },
-    { prop: "inicialkm",  width: 9 },
-    { prop: "finalkm", width: 9},
-    { prop: "preciokm", width: 9},
+    { prop: "fecha_viaje", name: "Fecha viaje",  width: 9 },
+    { prop: "id_horario", name: "Horario", width: 9},
+    { prop: "id_ruta", name: "Ruta", width: 9},
+    { prop: "id_servicio", name: "Servicio", width: 9},
     { prop: "activo" },
   ];
   constructor(private boletoService: BoletoService, private router: Router) {}

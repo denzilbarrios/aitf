@@ -14,10 +14,12 @@ export class AgenciaListComponent implements OnInit {
   SelectionType = SelectionType;
 
   columns = [
-    { prop: "id_agencia", name: "Id",  width: 9 },
-    { prop: "inicialkm",  width: 9 },
-    { prop: "finalkm", width: 9},
-    { prop: "preciokm", width: 9},
+    { prop: "id_agencia", name: "id",  width: 9 },
+    { prop: "nom_agc", name: "Nombre", width: 250 },
+    { prop: "dire_agc", name: "Dirección", width: 250},
+    { prop: "tel_agc", name: "Teléfono", width: 9},
+    { prop: "contact1_agc", name: "Contacto 1", width: 9},
+    { prop: "contact2_agc", name: "Contacto 2", width: 9},
     { prop: "activo" },
   ];
   constructor(private agenciaService: AgenciaService, private router: Router) {}

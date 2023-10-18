@@ -15,9 +15,7 @@ export class HorarioListComponent implements OnInit {
 
   columns = [
     { prop: "id_horario", name: "Id",  width: 9 },
-    { prop: "inicialkm",  width: 9 },
-    { prop: "finalkm", width: 9},
-    { prop: "preciokm", width: 9},
+    { prop: "hora",  width: 12 },
     { prop: "activo" },
   ];
   constructor(private horarioService: HorarioService, private router: Router) {}

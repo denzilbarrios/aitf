@@ -19,15 +19,15 @@ const boletoSchema = mongoose.Schema({
     type: Number,
     required: true
   },
-  id_servicio: {
-    type: Number,
-    required: true
-  },
   dni: {
     type: Number,
     required: true
   },
-  nom_viajero: {
+  nom_pasajero: {
+    type: String,
+    required: true
+  },
+  tel_pasajero: {
     type: String,
     required: true
   },

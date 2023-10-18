@@ -15,9 +15,13 @@ export class RutaListComponent implements OnInit {
 
   columns = [
     { prop: "id_ruta", name: "Id",  width: 9 },
-    { prop: "inicialkm",  width: 9 },
-    { prop: "finalkm", width: 9},
-    { prop: "preciokm", width: 9},
+    { prop: "nombre",  width: 250 },
+    { prop: "nemonico", width: 9},
+    { prop: "id_origen", width: 9},
+    { prop: "id_destino", width: 9},
+    { prop: "no_bus", width: 9},
+    { prop: "id_piloto", width: 9},
+    { prop: "id_asistente", width: 9},
     { prop: "activo" },
   ];
   constructor(private rutaService: RutaService, private router: Router) {}

@@ -8,6 +8,6 @@ export interface Agencia {
   contact2_agc: string;
   id_destino: string;
   nombre_comercial: string;
-  prioridad: string;
+  id_tipoAgencia: string;
   activo: string;
 }

@@ -15,9 +15,9 @@ export class SerieListComponent implements OnInit {
 
   columns = [
     { prop: "id_serie", name: "Id",  width: 9 },
-    { prop: "inicialkm",  width: 9 },
-    { prop: "finalkm", width: 9},
-    { prop: "preciokm", width: 9},
+    { prop: "descripcion",  width: 250 },
+    { prop: "serie", width: 9},
+    { prop: "correlativo", width: 9},
     { prop: "activo" },
   ];
   constructor(private serieService: SerieService, private router: Router) {}

@@ -25,9 +25,15 @@ export class RutaFormComponent implements OnInit {
     this.rutaForm = this.formBuilder.group({
       _id: ["", []],
       id_ruta: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      inicialkm: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      finalkm: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      preciokm: ["", [Validators.required, Validators.pattern('^-?(?:[0-9]+(?:\.[0-9]{1,2})?|\.[0-9]{1,2})$')]],
+      nombre: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
+      nemonico: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
+      id_origen: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      id_destino: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      id_servicio: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      no_bus: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      id_piloto: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      id_asistente: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+  
     });
   }
 

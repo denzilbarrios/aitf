@@ -15,9 +15,8 @@ export class EmpleadoListComponent implements OnInit {
 
   columns = [
     { prop: "id_empleado", name: "Id",  width: 9 },
-    { prop: "inicialkm",  width: 9 },
-    { prop: "finalkm", width: 9},
-    { prop: "preciokm", width: 9},
+    { prop: "nombres", name: "Nombres", width: 250 },
+    { prop: "id_puesto", name: "id Puesto", width: 9},
     { prop: "activo" },
   ];
   constructor(private empleadoService: EmpleadoService, private router: Router) {}

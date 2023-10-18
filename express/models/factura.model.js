@@ -11,7 +11,7 @@ const facturaSchema = mongoose.Schema({
     type: Number,
     required: true
   },
-  id_documento: {
+  no_documento: {
     type: Number,
     required: true
   },
@@ -21,7 +21,12 @@ const facturaSchema = mongoose.Schema({
   },
   fecha_doc: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+  },
+  hora_doc: {
+    type: String,
+    match: /^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])(:[0-5]?[0-9])?$/,
+    required: true
   },
   nit_cliente: {
     type: String,

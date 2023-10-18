@@ -25,9 +25,12 @@ export class FacturaDetalleFormComponent implements OnInit {
     this.facturaDetalleForm = this.formBuilder.group({
       _id: ["", []],
       id_facturaDetalle: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      inicialkm: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      finalkm: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      preciokm: ["", [Validators.required, Validators.pattern('^-?(?:[0-9]+(?:\.[0-9]{1,2})?|\.[0-9]{1,2})$')]],
+      id_factura: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      id_boleto: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      descripcion: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
+      cantidad: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      precio_u: ["", [Validators.required, Validators.pattern('^-?(?:[0-9]+(?:\.[0-9]{1,2})?|\.[0-9]{1,2})$')]],
+      subtotal: ["", [Validators.required, Validators.pattern('^-?(?:[0-9]+(?:\.[0-9]{1,2})?|\.[0-9]{1,2})$')]],
     });
   }
 

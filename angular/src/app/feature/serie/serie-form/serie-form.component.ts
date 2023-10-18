@@ -25,9 +25,9 @@ export class SerieFormComponent implements OnInit {
     this.serieForm = this.formBuilder.group({
       _id: ["", []],
       id_serie: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      inicialkm: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      finalkm: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      preciokm: ["", [Validators.required, Validators.pattern('^-?(?:[0-9]+(?:\.[0-9]{1,2})?|\.[0-9]{1,2})$')]],
+      descripcion: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
+      serie: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
+      correlativo: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
     });
   }
 

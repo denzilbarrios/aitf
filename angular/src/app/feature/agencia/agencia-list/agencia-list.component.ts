@@ -18,8 +18,8 @@ export class AgenciaListComponent implements OnInit {
     { prop: "nom_agc", name: "Nombre", width: 250 },
     { prop: "dire_agc", name: "Dirección", width: 250},
     { prop: "tel_agc", name: "Teléfono", width: 9},
-    { prop: "contact1_agc", name: "Contacto 1", width: 9},
-    { prop: "contact2_agc", name: "Contacto 2", width: 9},
+    { prop: "nombre_comercial", name: "Nombre Comercial", width: 250},
+    { prop: "contact1_agc", name: "Contacto 1", width: 250},
     { prop: "activo" },
   ];
   constructor(private agenciaService: AgenciaService, private router: Router) {}

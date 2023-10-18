@@ -1,8 +1,8 @@
 export interface Serie {
   _id: string;
   id_serie: string;
-  inicialkm: string;
-  finalkm: string;
-  preciokm: string;
+  descripcion: string;
+  serie: string;
+  correlativo: string;
   activo: string;
 }

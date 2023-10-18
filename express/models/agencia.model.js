@@ -21,11 +21,11 @@ const agenciaSchema = mongoose.Schema({
   },
   contact1_agc: {
     type: String,
-    required: true
+    default: null,
   },
   contact2_agc: {
     type: String,
-    required: true
+    default: null,
   },
   id_destino: {
     type: Number,
@@ -35,11 +35,7 @@ const agenciaSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  prioridad: {
-    type: Number,
-    required: true
-  },
-  idTipoAgencia: {
+  id_tipoAgencia: {
     type: Number,
     required: true
   },

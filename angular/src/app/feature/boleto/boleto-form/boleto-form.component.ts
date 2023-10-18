@@ -25,9 +25,13 @@ export class BoletoFormComponent implements OnInit {
     this.boletoForm = this.formBuilder.group({
       _id: ["", []],
       id_boleto: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      inicialkm: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      finalkm: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      preciokm: ["", [Validators.required, Validators.pattern('^-?(?:[0-9]+(?:\.[0-9]{1,2})?|\.[0-9]{1,2})$')]],
+      fecha_viaje: ["", []],
+      //fecha_viaje: ["", [Validators.required, Validators.pattern('^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$')]],
+      id_horario: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      id_ruta: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      dni: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      nom_pasajero: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
+      tel_pasajero: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
     });
   }
 

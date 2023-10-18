@@ -17,17 +17,29 @@
           <input type="text" class="form-control" formControlName="id_boleto" />
           </div>
         <div class="col-sm-6 col-md-6">
-          <label for="inicialkm" class="form-label">Inicio Boleto</label>
-          <input type="text" class="form-control" formControlName="inicialkm" />
+          <label for="fecha_viaje" class="form-label">Fecha de viaje</label>
+          <input type="date" class="form-control" formControlName="fecha_viaje" />
           </div>
           <div class="col-sm-6 col-md-6">
-            <label for="finalkm" class="form-label">Final Boleto</label>
-            <input type="text" class="form-control" formControlName="finalkm" />
+            <label for="id_horario" class="form-label">id Horario</label>
+            <input type="text" class="form-control" formControlName="id_horario" />
             </div>
         <div class="col-sm-6 col-md-6">
-          <label for="preciokm" class="form-label">Precio Boleto</label>
-          <input type="text" class="form-control" formControlName="preciokm" />
+          <label for="id_ruta" class="form-label">id Ruta</label>
+          <input type="text" class="form-control" formControlName="id_ruta" />
           </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="dni" class="form-label">DNI</label>
+          <input type="text" class="form-control" formControlName="dni" />
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="nom_pasajero" class="form-label">Nombre Pasajero</label>
+          <input type="text" class="form-control" formControlName="nom_pasajero" />
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <label for="tel_pasajero" class="form-label">Teléfono Pasajero</label>
+          <input type="text" class="form-control" formControlName="tel_pasajero" />
+        </div>
         <div class="row col-sm-12 col-md-12 mt-2">
           <div class="col-sm-6 col-md-6">
             <a href="javascript:void(0);" [routerLink]="['/boletos']" class="btn btn-primary"> <i class="fa fa-chevron-left"></i>

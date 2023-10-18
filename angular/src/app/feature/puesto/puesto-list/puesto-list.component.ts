@@ -15,9 +15,7 @@ export class PuestoListComponent implements OnInit {
 
   columns = [
     { prop: "id_puesto", name: "Id",  width: 9 },
-    { prop: "inicialkm",  width: 9 },
-    { prop: "finalkm", width: 9},
-    { prop: "preciokm", width: 9},
+    { prop: "descripcion",  width: 250 },
     { prop: "activo" },
   ];
   constructor(private puestoService: PuestoService, private router: Router) {}

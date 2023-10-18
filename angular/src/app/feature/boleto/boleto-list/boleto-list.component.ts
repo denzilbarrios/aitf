@@ -18,7 +18,8 @@ export class BoletoListComponent implements OnInit {
     { prop: "fecha_viaje", name: "Fecha viaje",  width: 9 },
     { prop: "id_horario", name: "Horario", width: 9},
     { prop: "id_ruta", name: "Ruta", width: 9},
-    { prop: "id_servicio", name: "Servicio", width: 9},
+    { prop: "dni", name: "DNI", width: 9},
+    { prop: "nom_pasajero", name: "Nombre de Pasajero", width: 250},
     { prop: "activo" },
   ];
   constructor(private boletoService: BoletoService, private router: Router) {}

@@ -15,9 +15,7 @@ export class TipoAgenciaListComponent implements OnInit {
 
   columns = [
     { prop: "id_tipoAgencia", name: "Id",  width: 9 },
-    { prop: "inicialkm",  width: 9 },
-    { prop: "finalkm", width: 9},
-    { prop: "preciokm", width: 9},
+    { prop: "descripcion", name: "Descripcion", width: 250 },
     { prop: "activo" },
   ];
   constructor(private tipoAgenciaService: TipoAgenciaService, private router: Router) {}

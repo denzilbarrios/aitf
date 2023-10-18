@@ -15,9 +15,8 @@ export class ServicioListComponent implements OnInit {
 
   columns = [
     { prop: "id_servicio", name: "Id",  width: 9 },
-    { prop: "inicialkm",  width: 9 },
-    { prop: "finalkm", width: 9},
-    { prop: "preciokm", width: 9},
+    { prop: "descripcion",  width: 250 },
+    { prop: "precio", width: 9},
     { prop: "activo" },
   ];
   constructor(private servicioService: ServicioService, private router: Router) {}

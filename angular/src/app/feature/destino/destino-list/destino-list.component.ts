@@ -15,9 +15,9 @@ export class DestinoListComponent implements OnInit {
 
   columns = [
     { prop: "id_destino", name: "Id",  width: 9 },
-    { prop: "inicialkm",  width: 9 },
-    { prop: "finalkm", width: 9},
-    { prop: "preciokm", width: 9},
+    { prop: "nombre",  width: 250 },
+    { prop: "nemonico", width: 9},
+    { prop: "km", width: 9},
     { prop: "activo" },
   ];
   constructor(private destinoService: DestinoService, private router: Router) {}

@@ -25,9 +25,8 @@ export class HorarioFormComponent implements OnInit {
     this.horarioForm = this.formBuilder.group({
       _id: ["", []],
       id_horario: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      inicialkm: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      finalkm: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      preciokm: ["", [Validators.required, Validators.pattern('^-?(?:[0-9]+(?:\.[0-9]{1,2})?|\.[0-9]{1,2})$')]],
+      hora: ["", [Validators.required, Validators.pattern(/^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])(:[0-5]?[0-9])?$/)]],
+      
     });
   }
 

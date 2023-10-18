@@ -4,8 +4,8 @@ export interface Boleto {
   fecha_viaje: string;
   id_horario: string;
   id_ruta: string;
-  id_servicio: string;
   dni: string;
-  nom_viaje: string;
+  nom_pasajero: string;
+  tel_pasajero: string;
   activo: string;
 }

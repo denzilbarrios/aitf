@@ -17,7 +17,7 @@ import { BoletoDetailsResolver } from "./boleto.resolver";
     NgxDatatableModule,
     ReactiveFormsModule,
     CoreModule.forRoot(),
-    SharedModule.forRoot()
+    SharedModule.forRoot(),
   ],
   providers: [BoletoService, BoletoDetailsResolver],
   bootstrap: []

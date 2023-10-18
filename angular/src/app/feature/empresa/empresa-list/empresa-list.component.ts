@@ -15,9 +15,10 @@ export class EmpresaListComponent implements OnInit {
 
   columns = [
     { prop: "id_empresa", name: "Id",  width: 9 },
-    { prop: "inicialkm",  width: 9 },
-    { prop: "finalkm", width: 9},
-    { prop: "preciokm", width: 9},
+    { prop: "razon_social",  width: 250 },
+    { prop: "nit", width: 15},
+    { prop: "direccion", width: 250},
+    { prop: "telefono", width: 12},
     { prop: "activo" },
   ];
   constructor(private empresaService: EmpresaService, private router: Router) {}

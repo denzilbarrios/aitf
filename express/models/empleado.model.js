@@ -11,9 +11,10 @@ const empleadoSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  apellidos: {
-    type: String,
-    required: true
+  id_puesto: {
+    type: Number,
+    required: true,
+    primaryKey: true,
   },
   activo: {
     type: Boolean,

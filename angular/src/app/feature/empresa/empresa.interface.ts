@@ -1,8 +1,9 @@
 export interface Empresa {
   _id: string;
   id_empresa: string;
-  inicialkm: string;
-  finalkm: string;
-  preciokm: string;
+  razon_social: string;
+  nit: string;
+  direccion: string;
+  telefono: string;
   activo: string;
 }

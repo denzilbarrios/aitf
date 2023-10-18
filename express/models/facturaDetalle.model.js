@@ -11,7 +11,7 @@ const facturaDetalleSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  id_boleta: {
+  id_boleto: {
     type: Number,
     required: true
   },

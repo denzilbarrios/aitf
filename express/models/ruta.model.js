@@ -23,10 +23,6 @@ const rutaSchema = mongoose.Schema({
     type: Number,
     required: true
   },
-  id_destino: {
-    type: Number,
-    required: true
-  },
   id_servicio: {
     type: Number,
     required: true

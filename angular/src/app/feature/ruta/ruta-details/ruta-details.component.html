@@ -14,24 +14,51 @@
       <form>
         <div class="row">
           <div class="form-group col-sm-6 col-md-6">
-            <label for="ruta" class="col-sm-4 col-md-4 col-form-label">ID Ruta:</label>
-            <label for="ruta" class="col-sm-8 col-md-8 col-form-label">{{ruta.id_ruta}}</label>
+            <label for="id_ruta" class="col-sm-4 col-md-4 col-form-label">ID Ruta:</label>
+            <label for="id_ruta" class="col-sm-8 col-md-8 col-form-label">{{ruta.id_ruta}}</label>
           </div>
           <div class="form-group col-sm-6 col-md-6">
-            <label for="inicialkm" class="col-sm-4 col-md-4 col-form-label">Inicial KM:</label>
-            <label for="inicialkm" class="col-sm-8 col-md-8 col-form-label">{{ruta.inicialkm}}</label>
+            <label for="nombre" class="col-sm-4 col-md-4 col-form-label">Nombre:</label>
+            <label for="nombre" class="col-sm-8 col-md-8 col-form-label">{{ruta.nombre}}</label>
           </div>
         </div>
         <div class="row">
           <div class="form-group col-sm-6 col-md-6">
-            <label for="finalkm" class="col-sm-4 col-md-4 col-form-label">Final KM:</label>
-            <label for="finalkm" class="col-sm-8 col-md-8 col-form-label">{{ruta.finalkm}}</label>
+            <label for="nemonico" class="col-sm-4 col-md-4 col-form-label">Nemonico:</label>
+            <label for="nemonico" class="col-sm-8 col-md-8 col-form-label">{{ruta.nemonico}}</label>
           </div>
           <div class="form-group col-sm-6 col-md-6">
-            <label for="preciokm" class="col-sm-4 col-md-4 col-form-label">Precio KM:</label>
-            <label for="preciokm" class="col-sm-8 col-md-8 col-form-label">{{ruta.preciokm}}</label>
+            <label for="id_origen" class="col-sm-4 col-md-4 col-form-label">id Origen:</label>
+            <label for="id_origen" class="col-sm-8 col-md-8 col-form-label">{{ruta.id_origen}}</label>
           </div>
         </div>
+        <div class="row">
+          <div class="form-group col-sm-6 col-md-6">
+            <label for="id_destino" class="col-sm-4 col-md-4 col-form-label">id Destino:</label>
+            <label for="id_destino" class="col-sm-8 col-md-8 col-form-label">{{ruta.id_destino}}</label>
+          </div>
+          <div class="form-group col-sm-6 col-md-6">
+            <label for="id_servicio" class="col-sm-4 col-md-4 col-form-label">id Servicio:</label>
+            <label for="id_servicio" class="col-sm-8 col-md-8 col-form-label">{{ruta.id_servicio}}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-6 col-md-6">
+            <label for="no_bus" class="col-sm-4 col-md-4 col-form-label">no Bus:</label>
+            <label for="no_bus" class="col-sm-8 col-md-8 col-form-label">{{ruta.no_bus}}</label>
+          </div>
+          <div class="form-group col-sm-6 col-md-6">
+            <label for="id_piloto" class="col-sm-4 col-md-4 col-form-label">id Piloto:</label>
+            <label for="id_piloto" class="col-sm-8 col-md-8 col-form-label">{{ruta.id_piloto}}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-6 col-md-6">
+            <label for="id_asistente" class="col-sm-4 col-md-4 col-form-label">id Asistente:</label>
+            <label for="id_asistente" class="col-sm-8 col-md-8 col-form-label">{{ruta.id_asistente}}</label>
+          </div>
+        </div>
+        
         <div class="row g-3">
           <div class="col-sm-6 col-md-6">
             <a href="javascript:void(0);" [routerLink]="['/rutas']" class="btn btn-primary">

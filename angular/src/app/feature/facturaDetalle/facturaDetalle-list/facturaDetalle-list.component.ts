@@ -15,9 +15,12 @@ export class FacturaDetalleListComponent implements OnInit {
 
   columns = [
     { prop: "id_facturaDetalle", name: "Id",  width: 9 },
-    { prop: "inicialkm",  width: 9 },
-    { prop: "finalkm", width: 9},
-    { prop: "preciokm", width: 9},
+    { prop: "id_factura",  width: 9 },
+    { prop: "id_boleto", width: 9},
+    { prop: "descripcion", width: 250},
+    { prop: "cantidad", width: 9},
+    { prop: "precio_u", width: 9},
+    { prop: "subtotal", width: 9},
     { prop: "activo" },
   ];
   constructor(private facturaDetalleService: FacturaDetalleService, private router: Router) {}

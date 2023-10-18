@@ -30,7 +30,7 @@ export class RutaFormComponent implements OnInit {
       id_origen: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
       id_destino: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
       id_servicio: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      no_bus: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      no_bus: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
       id_piloto: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
       id_asistente: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
   

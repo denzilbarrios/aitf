@@ -15,7 +15,20 @@ WORKDIR /app
 COPY . /app/
 
 # Build server side bundles
-RUN npm run build:ssr
+#RUN npm run build:ssr
+#RUN node --max-old-space-size=4096 ./node_modules/.bin/ng build --configuration=production,server
+
+# ... (las partes anteriores de tu Dockerfile)
+
+# Construir la aplicación para el navegador
+RUN node --max-old-space-size=4096 ./node_modules/.bin/ng build --configuration=production
+
+# Construir la aplicación para el servidor (SSR)
+RUN node --max-old-space-size=4096 ./node_modules/.bin/ng run frontend:server:production
+
+# ... (las partes posteriores de tu Dockerfile)
+
+
 
 FROM node:19.1-alpine3.15
 ## From 'builder' copy published folder

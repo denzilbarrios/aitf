@@ -25,7 +25,7 @@ export class TipoAgenciaFormComponent implements OnInit {
     this.tipoAgenciaForm = this.formBuilder.group({
       _id: ["", []],
       id_tipoAgencia: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
-      descripcion: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],      finalkm: ["", [Validators.required, Validators.pattern('^[0-9]*$')]],
+      descripcion: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
     });
   }
 

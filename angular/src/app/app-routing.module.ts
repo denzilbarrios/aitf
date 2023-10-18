@@ -57,6 +57,11 @@ const routes: Routes = [
     loadChildren: () => import("./feature/factura/factura.module").then((module) => module.FacturaModule)
   },
   {
+    path: "facturaDetalles",
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./feature/facturaDetalle/facturaDetalle.module").then((module) => module.FacturaDetalleModule)
+  },
+  {
     path: "horarios",
     canActivate: [AuthGuard],
     loadChildren: () => import("./feature/horario/horario.module").then((module) => module.HorarioModule)

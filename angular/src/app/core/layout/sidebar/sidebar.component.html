@@ -106,6 +106,18 @@
   </a>
 
   <a
+  [routerLink]="['/facturaDetalles']"
+  [routerLinkActive]="['router-link-active']"
+  tooltip="Factura Detalles"
+  container="body"
+  style="z-index: 1000; position: relative;"
+  class="list-group-item"
+>
+  <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
+  <span>Factura Detalles</span>
+</a>
+
+  <a
     [routerLink]="['/horarios']"
     [routerLinkActive]="['router-link-active']"
     tooltip="Horarios"
@@ -141,7 +153,7 @@
     <span>Rutas</span>
   </a>
   <a
-    [routerLink]="['/serie']"
+    [routerLink]="['/series']"
     [routerLinkActive]="['router-link-active']"
     tooltip="Series"
     container="body"
@@ -153,19 +165,7 @@
   </a>
 
   <a
-    [routerLink]="['/servicio']"
-    [routerLinkActive]="['router-link-active']"
-    tooltip="Servicios"
-    container="body"
-    style="z-index: 1000; position: relative;"
-    class="list-group-item"
-  >
-    <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
-    <span>Servicios</span>
-  </a>
-
-  <a
-    [routerLink]="['/servicio']"
+    [routerLink]="['/servicios']"
     [routerLinkActive]="['router-link-active']"
     tooltip="Servicios"
     container="body"

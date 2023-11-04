@@ -72,6 +72,20 @@ services:
     links:
       - mariadb
   
+  python:
+    build: python
+    container_name: python
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_DB_USERNAME=admin-user
+      - MONGO_DB_PASSWORD=admin-password
+      - MONGO_DB_HOST=database
+      - MONGO_DB_PORT=27017
+    links:
+      - database
+
   nginx: #name of the fourth service
     build: nginx # specify the directory of the Dockerfile
     container_name: nginx

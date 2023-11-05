@@ -1,11 +1,265 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_file, request
+from pymongo import MongoClient
+from flask_cors import CORS
+from generador_reportes import *
+from prediccion_reportes import *
+import pandas as pd
+import threading
+import time
+
 
 app = Flask(__name__)
+CORS(app)
+
+# Variables para la caché
+data_cache = {}
+
+# Función para actualizar la caché de datos
+def update_data_cache():
+    print("Conectando a MongoDB...")
+    uri_conexion = "mongodb://admin-user:admin-password@aitf-litegua.barysa.com"
+    client = MongoClient(uri_conexion)
+    db = client["mean-contacts"]
+
+    data_cache['boletos'] = pd.DataFrame(list(db.boletos.find()))
+    data_cache['facturadetalles'] = pd.DataFrame(list(db.facturadetalles.find()))
+    data_cache['facturas'] = pd.DataFrame(list(db.facturas.find()))
+    data_cache['rutas'] = pd.DataFrame(list(db.rutas.find()))
+    data_cache['servicios'] = pd.DataFrame(list(db.servicios.find()))
+    data_cache['horarios'] = pd.DataFrame(list(db.horarios.find()))
+
+    # Procesamiento de datos: Unión de tablas con merge
+    df = data_cache['boletos'].merge(data_cache['facturadetalles'], on='id_boleto', how='left')
+    df = df.merge(data_cache['facturas'], on='id_factura', how='left')
+    df = df.merge(data_cache['rutas'], on='id_ruta', how='left', suffixes=('', '_rutas'))
+    df = df.merge(data_cache['servicios'], on='id_servicio', how='left', suffixes=('', '_servicios'))
+    df = df.merge(data_cache['horarios'], on='id_horario', how='left', suffixes=('', '_horarios'))
+
+    data_cache['merged_data'] = df
+
+@app.route('/apipy/update-data', methods=['POST'])
+def update_data_endpoint():
+    update_data_cache()
+    return jsonify({"message": "Datos actualizados correctamente!"})
 
 @app.route('/apipy/data', methods=['GET'])
 def get_data():
     # Aquí puedes realizar tu análisis y devolver los resultados
     return jsonify({"message": "Hello from Flask!"})
 
+@app.route('/apipy/reporte-ingresos-mensual-anual', methods=['GET'])
+def get_ingreso_mensuales_anuales_reporte():
+    buf = reporte_ventas_mensuales_anuales(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/reporte-cantidad-mensual-anual', methods=['GET'])
+def get_cantidad_mensuales_anuales_report():
+    buf = reporte_cantidad_boletos_mensuales_anuales(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/reporte-ventas-mensuales-ruta', methods=['GET'])
+def get_ventas_mensuales_por_ruta():
+    buf = reporte_ventas_mensuales_por_ruta(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+
+@app.route('/apipy/reporte-ingresos-mensuales-ruta', methods=['GET'])
+def get_ingresos_mensuales_por_ruta():
+    buf = reporte_ingresos_mensuales_por_ruta(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/ventas-por-dia-semana', methods=['GET'])
+def get_ventas_por_dia_semana():
+    buf = reporte_ventas_por_dia_semana(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/promedio-ventas-por-dia-semana', methods=['GET'])
+def get_promedio_ventas_por_dia_semana():
+    buf = reporte_promedio_ventas_por_dia_semana(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/ingresos-por-dia-semana', methods=['GET'])
+def get_ingresos_por_dia_semana():
+    buf = reporte_ingresos_por_dia_semana(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/promedio-ingresos-por-dia-semana', methods=['GET'])
+def get_promedio_ingresos_por_dia_semana():
+    buf = reporte_promedio_ingresos_por_dia_semana(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/top25-ventas-por-horario', methods=['GET'])
+def get_top25_ventas_por_horario():
+    buf = reporte_top25_ventas_por_horario(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/top25-ingresos-por-horario', methods=['GET'])
+def get_top25_ingresos_por_horario():
+    buf = reporte_top25_ingresos_por_horario(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/top25-horarios-promedio-diario', methods=['GET'])
+def get_top25_horarios_promedio_diario():
+    buf = reporte_top25_horarios_promedio_diario(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+
+@app.route('/apipy/top25-horarios-promedio-diario-ingresos', methods=['GET'])
+def get_top25_horarios_promedio_diario_ingresos():
+    buf = reporte_top25_horarios_promedio_diario_ingresos(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/reporte-ventas-trimestrales', methods=['GET'])
+def get_ventas_trimestrales_reporte():
+    buf = reporte_ventas_trimestrales(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+
+@app.route('/apipy/reporte-ingresos-trimestrales', methods=['GET'])
+def get_ingresos_trimestrales_reporte():
+    buf = reporte_ingresos_trimestrales(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+##### Predicciones
+
+@app.route('/apipy/reporte-predicciones-ingresos', methods=['GET'])
+def get_predicciones_ingresos__reporte():
+    buf = reporte_predicciones_ingresos(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/reporte-predicciones-futuras', methods=['GET'])
+def get_predicciones_futuras_reporte():
+    buf = reporte_predicciones_futuras(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/reporte-predicciones-boletos', methods=['GET'])
+def get_predicciones_boletos_reporte():
+    buf = reporte_predicciones_boletos(data_cache)
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/reporte-predicciones-por-periodo', methods=['GET'])
+def get_predicciones_por_periodo_reporte():
+    start_year = int(request.args.get('start_year', 2023))
+    end_year = int(request.args.get('end_year', 2025))
+    buf = reporte_predicciones_por_periodo(data_cache, start_year, end_year)
+    ## .../apipy/reporte-predicciones-por-periodo?start_year=2024&end_year=2026
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/reporte-predicciones-por-ruta', methods=['GET'])
+def get_predicciones_por_ruta_reporte():
+    # Generar el reporte
+    buf = generar_reporte_predicciones_por_ruta(data_cache)
+    # Retornar el reporte como imagen PNG
+    return send_file(buf, mimetype="image/png")
+  
+
+@app.route('/apipy/predicciones-futuras-por-ruta-periodo', methods=['GET'])
+def get_predicciones_futuras_por_ruta_reporte():
+    # Recoger los argumentos (por defecto 2023 y 2025)
+    start_year = request.args.get('start_year', default=2023, type=int)
+    end_year = request.args.get('end_year', default=2025, type=int)
+    
+    # Generar el reporte
+    buf = generar_reporte_predicciones_futuras(data_cache, start_year, end_year)
+    
+    ### /apipy/predicciones-futuras-por-ruta?start_year=2022&end_year=2024
+
+    # Retornar el reporte como imagen PNG
+    return send_file(buf, mimetype="image/png")
+
+
+@app.route('/apipy/predicciones-y-comparacion', methods=['GET'])
+def get_predicciones_y_comparacion_reporte():
+    start_year = int(request.args.get('start_year', 2023))
+    end_year = int(request.args.get('end_year', 2025))
+    
+    buf = generar_predicciones_y_comparacion(data_cache, start_year, end_year)
+
+    # Retornar el reporte como imagen PNG
+    return send_file(buf, mimetype="image/png")
+
+
+@app.route('/apipy/predicciones-ingresos-por-ruta', methods=['GET'])
+def get_predicciones_ingresos_por_ruta_reporte():
+    # Generar el reporte
+    buf = generar_predicciones_ingresos_por_ruta(data_cache)
+
+    # Retornar el reporte como imagen PNG
+    return send_file(buf, mimetype="image/png")
+
+
+@app.route('/apipy/predicciones-ingresos-por-ruta-periodo', methods=['GET'])
+def get_predicciones_ingresos_por_ruta_periodo_reporte():
+    # Recoger los argumentos (por defecto 2023 y 2025)
+    start_year = request.args.get('start_year', default=2023, type=int)
+    end_year = request.args.get('end_year', default=2025, type=int)
+    
+    # Generar el reporte
+    buf = generar_predicciones_ingresos_por_ruta_periodo(data_cache, start_year, end_year)
+
+    # Retornar el reporte como imagen PNG
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/predicciones-ventas-mensuales', methods=['GET'])
+def get_predicciones_ventas_mensuales_reporte():
+    # Generar el reporte
+    buf = generar_predicciones_y_comparacion_ventas(data_cache)
+
+    # Retornar el reporte como imagen PNG
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/predicciones-ventas-futuras', methods=['GET'])
+def get_predicciones_comparacion_ventas__futuras_reporte():
+    # Recoger los argumentos de start_year y end_year (por defecto 2023 y 2025)
+    start_year = request.args.get('start_year', default=2023, type=int)
+    end_year = request.args.get('end_year', default=2025, type=int)
+
+    # Generar el reporte
+    buf = generar_predicciones_y_comparacion_ventas(data_cache, start_year, end_year)
+
+    # Retornar el reporte como imagen PNG
+    return send_file(buf, mimetype="image/png")
+
+# Endpoint para generar el reporte de predicciones
+@app.route('/apipy/predicciones-ingresos', methods=['GET'])
+def get_predicciones_ingresos__comparacion_reporte():
+    # Generar el reporte
+    buf = generar_predicciones_y_comparacion_ingresos(data_cache)
+
+    # Retornar el reporte como imagen PNG
+    return send_file(buf, mimetype="image/png")
+
+@app.route('/apipy/predicciones-ventas-futuras', methods=['GET'])
+def get_predicciones_ventas_futuras_reporte():
+    # Recoger los argumentos de start_year y end_year (por defecto 2023 y 2025)
+    start_year = request.args.get('start_year', default=2023, type=int)
+    end_year = request.args.get('end_year', default=2025, type=int)
+
+    # Llamar a la función para generar predicciones
+    reporte_img = generar_predicciones_ventas_futuras(data_cache, start_year, end_year)
+
+    # Retornar el reporte como imagen PNG
+    return send_file(reporte_img, mimetype="image/png")
+
+@app.route('/apipy/predicciones-ingresos-futuros', methods=['GET'])
+def get_predicciones_ingresos_futuros_reporte():
+    # Recoger los argumentos de start_year y end_year (por defecto 2023 y 2025)
+    start_year = request.args.get('start_year', default=2023, type=int)
+    end_year = request.args.get('end_year', default=2025, type=int)
+
+    # Llamar a la función para generar predicciones
+    reporte_img = generar_predicciones_ingresos_futuros(data_cache, start_year, end_year)
+
+    # Retornar el reporte como imagen PNG
+    return send_file(reporte_img, mimetype="image/png")
+
+
+
+def periodic_data_update():
+    while True:
+        update_data_cache()
+        time.sleep(60)  # Esperar 60 segundos antes de la próxima actualización
+
 if __name__ == '__main__':
+    threading.Thread(target=periodic_data_update).start()  # Iniciar actualización periódica de datos en segundo plano
     app.run(host='0.0.0.0', port=5000)

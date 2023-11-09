@@ -6,6 +6,7 @@ from prediccion_reportes import *
 import pandas as pd
 import threading
 import time
+import os
 
 
 app = Flask(__name__)
@@ -16,10 +17,20 @@ data_cache = {}
 
 # Función para actualizar la caché de datos
 def update_data_cache():
-    print("Conectando a MongoDB...")
-    uri_conexion = "mongodb://admin-user:admin-password@aitf-litegua.barysa.com"
+    # Configura la conexión a MongoDB utilizando las variables de entorno
+    mongo_host = os.environ.get('MONGO_DB_HOST', 'localhost')
+    mongo_port = int(os.environ.get('MONGO_DB_PORT', 27017))
+    mongo_username = os.environ.get('MONGO_DB_USERNAME', 'admin-user')
+    mongo_password = os.environ.get('MONGO_DB_PASSWORD', 'admin-password')
+
+    # Crea la URI de conexión a MongoDB
+    uri_conexion = f"mongodb://{mongo_username}:{mongo_password}@{mongo_host}:{mongo_port}"
+
+    # Crea una instancia del cliente de MongoDB
     client = MongoClient(uri_conexion)
-    db = client["mean-contacts"]
+
+    # Accede a la base de datos que deseas utilizar
+    db = client['mean-contacts']
 
     data_cache['boletos'] = pd.DataFrame(list(db.boletos.find()))
     data_cache['facturadetalles'] = pd.DataFrame(list(db.facturadetalles.find()))
@@ -41,6 +52,11 @@ def update_data_cache():
 def update_data_endpoint():
     update_data_cache()
     return jsonify({"message": "Datos actualizados correctamente!"})
+
+@app.route('/apipy/', methods=['GET'])
+def get_data_raiz():
+    # Aquí puedes realizar tu análisis y devolver los resultados
+    return jsonify({"message": "Hello from Flask!"})
 
 @app.route('/apipy/data', methods=['GET'])
 def get_data():
@@ -142,7 +158,7 @@ def get_predicciones_por_periodo_reporte():
     start_year = int(request.args.get('start_year', 2023))
     end_year = int(request.args.get('end_year', 2025))
     buf = reporte_predicciones_por_periodo(data_cache, start_year, end_year)
-    ## .../apipy/reporte-predicciones-por-periodo?start_year=2024&end_year=2026
+    ## .../reporte-predicciones-por-periodo?start_year=2024&end_year=2026
     return send_file(buf, mimetype="image/png")
 
 @app.route('/apipy/reporte-predicciones-por-ruta', methods=['GET'])
@@ -162,7 +178,7 @@ def get_predicciones_futuras_por_ruta_reporte():
     # Generar el reporte
     buf = generar_reporte_predicciones_futuras(data_cache, start_year, end_year)
     
-    ### /apipy/predicciones-futuras-por-ruta?start_year=2022&end_year=2024
+    ### /predicciones-futuras-por-ruta?start_year=2022&end_year=2024
 
     # Retornar el reporte como imagen PNG
     return send_file(buf, mimetype="image/png")

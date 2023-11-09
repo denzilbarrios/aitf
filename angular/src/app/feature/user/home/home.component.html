@@ -1,6 +1,4 @@
-<div
-  class="container-fluid d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom"
->
+<div class="container-fluid d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
   <h1 class="h2">Dashboard</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
@@ -12,6 +10,28 @@
       This week
     </button>
   </div>
-  <button class="btn btn-sm btn-outline-secondary" (click)="getAndDisplayImage()">Imagen</button>
-  <img [src]="imageUrl" alt="Imagen">
+</div>
+
+<div>
+  <!-- Listbox para seleccionar la URL de Reportes -->
+  <select name="listbox-reportes" (change)="onSelectionChangeReportes($event.target.value)">
+    <option *ngFor="let url of urlsReportes" [value]="url.src">{{ url.name }}</option>
+  </select>
+
+  <!-- Mostrar la imagen seleccionada de Reportes -->
+  <div class="image-container" *ngIf="selectedUrlReportes">
+    <img class="zoomable" name="imagen-reportes" [src]="selectedUrlReportes" alt="Imagen seleccionada" (click)="toggleZoom('reportes')" />
+    <button class="btn btn-sm btn-danger" (click)="clearImage('reportes')">Limpiar</button>
+  </div>
+
+  <!-- Listbox para seleccionar la URL de Predicción -->
+  <select name="listbox-prediccion" (change)="onSelectionChangePrediccion($event.target.value)">
+    <option *ngFor="let url of urlsPrediccion" [value]="url.src">{{ url.name }}</option>
+  </select>
+
+  <!-- Mostrar la imagen seleccionada de Predicción -->
+  <div class="image-container" *ngIf="selectedUrlPrediccion">
+    <img class="zoomable" name="imagen-prediccion" [src]="selectedUrlPrediccion" alt="Imagen seleccionada" (click)="toggleZoom('prediccion')" />
+    <button class="btn btn-sm btn-danger" (click)="clearImage('prediccion')">Limpiar</button>
+  </div>
 </div>

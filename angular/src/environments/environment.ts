@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: "/api"
+  apiEndpoint: "/api",
+  apiPythonEndpoint: '/apipy',
 };
 
 /*

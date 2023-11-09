@@ -1,3 +1,67 @@
 .bg-purple {
   background-color: var(--purple);
 }
+
+/* Estilo para el contenedor de imágenes */
+.image-container {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  /* Estilo para la imagen */
+  .zoomable {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  /* Estilo para la imagen cuando se hace zoom */
+  &.zoomed {
+    .zoomable {
+      transform: scale(1.2); /* Puedes ajustar el nivel de zoom aquí */
+    }
+  }
+
+  /* Estilo para el botón Limpiar */
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+}
+
+/* Estilo para el contenedor de selectores */
+select {
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: #007bff; /* Color del borde al pasar el ratón */
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+}

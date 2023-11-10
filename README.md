@@ -3,13 +3,13 @@ Realizado por: Denzil Barrios
 
 
 
-# Clonar el proyecto:
+# Clonar repositorio, localmente:
 $ git clone https://github.com/denzilbarrios/aitf.git
 
-# Para preparar el contenedor
+# Preparar el contenedor
 $ docker-compose build
 
-# Para ejecutarlo 
+# Ejecutarlo 
 $ docker-compose up
 
 
@@ -32,4 +32,9 @@ Para acceder al proyecto se utiliza la siguiente url.
 
 http://ip_servidor:8081
 
-** Este proyecto fue ejecutado desde Ubuntu Server 20.04.4 LTS
+** Este proyecto fue ejecutado desde Ubuntu Server 20.04.3 LTS
+
+con redireconamiento en nginx {proxy pass} hacia el puerto 8081, 
+
+para la habilitación de acceso via https con certificado Let's Encrypt.
+

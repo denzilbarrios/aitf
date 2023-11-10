@@ -1,6 +1,6 @@
 Flask
 Flask-Cors
-pandas
+pandas==1.5.3
 pymongo
 seaborn
 scikit-learn

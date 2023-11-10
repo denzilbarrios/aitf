@@ -4,6 +4,7 @@ import calendar
 import matplotlib.pyplot as plt
 import io
 from io import BytesIO
+from PIL import Image, ImageDraw
 from matplotlib.ticker import FuncFormatter
 
 
@@ -212,61 +213,6 @@ def reporte_promedio_ventas_por_dia_semana(data_cache):
     plt.title("Promedio de Boletos Vendidos por Día de la Semana")
     plt.xlabel('Día de la Semana')
     plt.ylabel('Promedio de Boletos Vendidos')
-    plt.tight_layout()
-
-    buf = io.BytesIO()
-    plt.savefig(buf, format="png")
-    buf.seek(0)
-    
-    return buf
-
-def reporte_ingresos_por_dia_semana(data_cache):
-    df_boletos = data_cache['boletos']
-    df_facturadetalles = data_cache['facturadetalles']
-    df_facturas = data_cache['facturas']
-
-    df = df_boletos.merge(df_facturadetalles, on='id_boleto', how='left')
-    df = df.merge(df_facturas, on='id_factura', how='left')
-    df['dayOfWeek'] = pd.to_datetime(df['fecha_doc']).dt.dayofweek + 1
-    days_of_week = {1: "Domingo", 2: "Lunes", 3: "Martes", 4: "Miércoles", 5: "Jueves", 6: "Viernes", 7: "Sábado"}
-
-    grouped_income = df.groupby('dayOfWeek')['total'].sum().reset_index()
-    grouped_income['dia_semana'] = grouped_income['dayOfWeek'].map(days_of_week)
-
-    plt.figure(figsize=(10, 6))
-    sns.barplot(x='dia_semana', y='total', data=grouped_income, palette="viridis")
-    plt.title("Ingresos por Día de la Semana")
-    plt.xlabel('Día de la Semana')
-    plt.ylabel('Ingresos Totales en Q')
-    plt.gca().yaxis.set_major_formatter(formatter)  # Ajustar formato del eje y
-    plt.tight_layout()
-
-    buf = io.BytesIO()
-    plt.savefig(buf, format="png")
-    buf.seek(0)
-    
-    return buf
-
-def reporte_promedio_ingresos_por_dia_semana(data_cache):
-    df_boletos = data_cache['boletos']
-    df_facturadetalles = data_cache['facturadetalles']
-    df_facturas = data_cache['facturas']
-
-    df = df_boletos.merge(df_facturadetalles, on='id_boleto', how='left')
-    df = df.merge(df_facturas, on='id_factura', how='left')
-    df['dayOfWeek'] = pd.to_datetime(df['fecha_doc']).dt.dayofweek + 1
-    days_of_week = {1: "Domingo", 2: "Lunes", 3: "Martes", 4: "Miércoles", 5: "Jueves", 6: "Viernes", 7: "Sábado"}
-
-    grouped_day_date = df.groupby(['dayOfWeek', 'fecha_doc'])['total'].sum().reset_index()
-    grouped_avg = grouped_day_date.groupby('dayOfWeek')['total'].mean().reset_index()
-    grouped_avg['dia_semana'] = grouped_avg['dayOfWeek'].map(days_of_week)
-
-    plt.figure(figsize=(10, 6))
-    sns.barplot(x='dia_semana', y='total', data=grouped_avg, palette="viridis")
-    plt.title("Promedio de Ingresos por Día de la Semana")
-    plt.xlabel('Día de la Semana')
-    plt.ylabel('Promedio de Ingresos en Q')
-    plt.gca().yaxis.set_major_formatter(formatter)  # Ajustar formato del eje y
     plt.tight_layout()
 
     buf = io.BytesIO()
